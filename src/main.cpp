@@ -3,7 +3,7 @@
 #include <vector>
 
 int main() {
-    std::cout << "RRT Pathfinding Algorithm Demo" << std::endl;
+    std::cout << "RRT 路径规划算法演示" << std::endl;
     
     // 创建障碍物
     std::vector<Obstacle> obstacles = {
@@ -31,13 +31,13 @@ int main() {
     std::vector<Point2D> path = rrt.findPath(start, goal);
     
     if (!path.empty()) {
-        std::cout << "Found path with " << path.size() << " points:" << std::endl;
+        std::cout << "找到包含 " << path.size() << " 个点的路径：" << std::endl;
         for (const auto& point : path) {
             std::cout << "(" << point.x << ", " << point.y << ") ";
         }
         std::cout << std::endl;
     } else {
-        std::cout << "No path found!" << std::endl;
+        std::cout << "未找到路径！" << std::endl;
     }
     
     return 0;

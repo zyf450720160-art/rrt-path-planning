@@ -6,11 +6,11 @@
 // 打印路径
 void printPath(const std::vector<Point2D>& path) {
     if (path.empty()) {
-        std::cout << "No path found!" << std::endl;
+        std::cout << "未找到路径！" << std::endl;
         return;
     }
     
-    std::cout << "Path (" << path.size() << " points): ";
+    std::cout << "路径 (" << path.size() << " 个点): ";
     for (size_t i = 0; i < path.size(); ++i) {
         std::cout << "(" << path[i].x << "," << path[i].y << ")";
         if (i < path.size() - 1) {
@@ -22,7 +22,7 @@ void printPath(const std::vector<Point2D>& path) {
 
 // 测试用例1：简单路径规划
 void testSimplePath() {
-    std::cout << "\n=== Test 1: Simple Path Planning ===" << std::endl;
+    std::cout << "\n=== 测试用例1：简单路径规划 ===" << std::endl;
     
     // 创建障碍物
     std::vector<Obstacle> obstacles = {
@@ -44,8 +44,8 @@ void testSimplePath() {
     
     std::vector<Point2D> path = rrt.findPath(start, goal);
     
-    std::cout << "Start: (" << start.x << "," << start.y << ")" << std::endl;
-    std::cout << "Goal: (" << goal.x << "," << goal.y << ")" << std::endl;
+    std::cout << "起点: (" << start.x << "," << start.y << ")" << std::endl;
+    std::cout << "终点: (" << goal.x << "," << goal.y << ")" << std::endl;
     printPath(path);
     
     // 验证路径存在
@@ -53,12 +53,12 @@ void testSimplePath() {
     assert(std::abs(path.front().x - start.x) < 0.1 && std::abs(path.front().y - start.y) < 0.1);
     assert(std::abs(path.back().x - goal.x) < config.goalTolerance && 
            std::abs(path.back().y - goal.y) < config.goalTolerance);
-    std::cout << "✅ Test 1 passed!" << std::endl;
+    std::cout << "✅ 测试用例1通过！" << std::endl;
 }
 
 // 测试用例2：无路径情况
 void testNoPath() {
-    std::cout << "\n=== Test 2: No Path Scenario ===" << std::endl;
+    std::cout << "\n=== 测试用例2：无路径情况 ===" << std::endl;
     
     // 创建完全阻塞的障碍物
     std::vector<Obstacle> obstacles = {
@@ -78,18 +78,18 @@ void testNoPath() {
     
     std::vector<Point2D> path = rrt.findPath(start, goal);
     
-    std::cout << "Start: (" << start.x << "," << start.y << ")" << std::endl;
-    std::cout << "Goal: (" << goal.x << "," << goal.y << ")" << std::endl;
+    std::cout << "起点: (" << start.x << "," << start.y << ")" << std::endl;
+    std::cout << "终点: (" << goal.x << "," << goal.y << ")" << std::endl;
     printPath(path);
     
     // 验证没有找到路径
     assert(path.empty());
-    std::cout << "✅ Test 2 passed!" << std::endl;
+    std::cout << "✅ 测试用例2通过！" << std::endl;
 }
 
 // 测试用例3：起点等于终点
 void testSameStartGoal() {
-    std::cout << "\n=== Test 3: Same Start and Goal ===" << std::endl;
+    std::cout << "\n=== 测试用例3：起点等于终点 ===" << std::endl;
     
     std::vector<Obstacle> obstacles;
     RRT rrt(obstacles);
@@ -100,19 +100,19 @@ void testSameStartGoal() {
     
     std::vector<Point2D> path = rrt.findPath(start, goal);
     
-    std::cout << "Start/Goal: (" << start.x << "," << start.y << ")" << std::endl;
+    std::cout << "起点/终点: (" << start.x << "," << start.y << ")" << std::endl;
     printPath(path);
     
     // 验证路径只包含两个点（起点和终点）
     assert(path.size() == 2);
     assert(std::abs(path[0].x - start.x) < 0.1 && std::abs(path[0].y - start.y) < 0.1);
     assert(std::abs(path[1].x - goal.x) < 0.1 && std::abs(path[1].y - goal.y) < 0.1);
-    std::cout << "✅ Test 3 passed!" << std::endl;
+    std::cout << "✅ 测试用例3通过！" << std::endl;
 }
 
 // 测试用例4：不同参数配置
 void testDifferentConfigs() {
-    std::cout << "\n=== Test 4: Different Configurations ===" << std::endl;
+    std::cout << "\n=== 测试用例4：不同参数配置 ===" << std::endl;
     
     std::vector<Obstacle> obstacles = {
         Obstacle(3.0, 3.0, 4.0, 4.0)  // 大障碍物
@@ -140,18 +140,18 @@ void testDifferentConfigs() {
     rrt2.setBounds(0.0, 10.0, 0.0, 10.0);
     std::vector<Point2D> path2 = rrt2.findPath(start, goal);
     
-    std::cout << "Small step size path length: " << path1.size() << std::endl;
-    std::cout << "Large step size path length: " << path2.size() << std::endl;
+    std::cout << "小步长路径长度: " << path1.size() << std::endl;
+    std::cout << "大步长路径长度: " << path2.size() << std::endl;
     
     // 验证两种配置都能找到路径
     assert(!path1.empty());
     assert(!path2.empty());
-    std::cout << "✅ Test 4 passed!" << std::endl;
+    std::cout << "✅ 测试用例4通过！" << std::endl;
 }
 
 // 测试用例5：复杂环境
 void testComplexEnvironment() {
-    std::cout << "\n=== Test 5: Complex Environment ===" << std::endl;
+    std::cout << "\n=== 测试用例5：复杂环境 ===" << std::endl;
     
     // 创建多个障碍物
     std::vector<Obstacle> obstacles = {
@@ -177,7 +177,7 @@ void testComplexEnvironment() {
     
     std::vector<Point2D> path = rrt.findPath(start, goal);
     
-    std::cout << "Complex environment path length: " << path.size() << std::endl;
+    std::cout << "复杂环境路径长度: " << path.size() << std::endl;
     printPath({path.front(), path.back()}); // 只打印起点和终点
     
     // 验证路径存在
@@ -185,11 +185,11 @@ void testComplexEnvironment() {
     assert(std::abs(path.front().x - start.x) < 0.1 && std::abs(path.front().y - start.y) < 0.1);
     assert(std::abs(path.back().x - goal.x) < config.goalTolerance && 
            std::abs(path.back().y - goal.y) < config.goalTolerance);
-    std::cout << "✅ Test 5 passed!" << std::endl;
+    std::cout << "✅ 测试用例5通过！" << std::endl;
 }
 
 int main() {
-    std::cout << "Running RRT Algorithm Tests..." << std::endl;
+    std::cout << "正在运行RRT算法测试..." << std::endl;
     
     try {
         testSimplePath();
@@ -198,13 +198,13 @@ int main() {
         testDifferentConfigs();
         testComplexEnvironment();
         
-        std::cout << "\n🎉 All RRT tests passed successfully!" << std::endl;
+        std::cout << "\n🎉 所有RRT测试均成功通过！" << std::endl;
         return 0;
     } catch (const std::exception& e) {
-        std::cerr << "Test failed with exception: " << e.what() << std::endl;
+        std::cerr << "测试失败，异常信息: " << e.what() << std::endl;
         return 1;
     } catch (...) {
-        std::cerr << "Test failed with unknown exception" << std::endl;
+        std::cerr << "测试失败，未知异常" << std::endl;
         return 1;
     }
 }

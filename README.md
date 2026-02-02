@@ -1,32 +1,32 @@
-# RRT Path Planning Algorithm
+# RRT 路径规划算法
 
-A C++ implementation of the Rapidly-exploring Random Tree (RRT) algorithm for 2D path planning with obstacle avoidance.
+基于 C++ 实现的快速探索随机树（Rapidly-exploring Random Tree, RRT）算法，用于 2D 环境中的路径规划和障碍物避障。
 
-## Features
+## 功能特性
 
-- Complete RRT implementation with configurable parameters
-- Obstacle collision detection (rectangular obstacles)
-- Multiple test cases covering various scenarios
-- CMake build system support
-- C++17 standard
+- 完整的 RRT 算法实现，支持参数配置
+- 障碍物碰撞检测（矩形障碍物）
+- 多个测试用例，覆盖各种场景
+- CMake 构建系统支持
+- C++17 标准
 
-## Directory Structure
+## 目录结构
 
 ```
 rrt/
-├── CMakeLists.txt      # CMake build configuration
-├── README.md           # This file
-├── .gitignore          # Git ignore rules
-├── include/            # Header files
-│   └── rrt.h           # RRT core algorithm declarations
-├── src/                # Source files
-│   ├── main.cpp        # Demo application
-│   └── rrt.cpp         # RRT implementation
-└── tests/              # Test files
-    └── test_rrt.cpp    # Comprehensive test suite
+├── CMakeLists.txt      # CMake 构建配置文件
+├── README.md           # 本说明文件
+├── .gitignore          # Git 忽略规则
+├── include/            # 头文件目录
+│   └── rrt.h           # RRT 核心算法声明
+├── src/                # 源文件目录
+│   ├── main.cpp        # 演示应用程序
+│   └── rrt.cpp         # RRT 算法实现
+└── tests/              # 测试文件目录
+    └── test_rrt.cpp    # 完整的测试套件
 ```
 
-## Building
+## 构建方法
 
 ```bash
 mkdir build
@@ -35,35 +35,35 @@ cmake ..
 make
 ```
 
-## Running
+## 运行方式
 
-### Demo Application
+### 演示应用程序
 ```bash
 ./rrt_planning
 ```
 
-### Tests
+### 运行测试
 ```bash
 ./rrt_test
 ```
 
-## Algorithm Details
+## 算法原理
 
-The RRT algorithm works by:
-1. Starting from an initial point
-2. Iteratively sampling random points in the search space
-3. Finding the nearest node in the existing tree
-4. Extending the tree toward the sampled point by a fixed step size
-5. Checking for collisions with obstacles
-6. Repeating until the goal is reached or maximum iterations are exceeded
+RRT 算法的工作原理：
+1. 从起始点开始构建搜索树
+2. 在搜索空间中迭代采样随机点
+3. 找到现有树中距离最近的节点
+4. 向采样点方向以固定步长扩展树
+5. 检查扩展路径是否与障碍物发生碰撞
+6. 重复上述过程，直到到达目标点或达到最大迭代次数
 
-## Configuration Options
+## 配置选项
 
-- `stepSize`: Distance to extend the tree in each iteration
-- `maxIterations`: Maximum number of iterations before giving up
-- `goalSampleRate`: Probability of sampling the goal point directly
-- `goalTolerance`: Distance threshold to consider the goal reached
+- `stepSize`：每次迭代向采样点扩展的距离
+- `maxIterations`：达到最大迭代次数后停止搜索
+- `goalSampleRate`：直接采样目标点的概率
+- `goalTolerance`：判定到达目标点的距离阈值
 
-## License
+## 许可证
 
-MIT License
+MIT 许可证
