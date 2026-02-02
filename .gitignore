@@ -1,0 +1,25 @@
+# Build directories
+build/
+cmake-build-*/
+
+# Compiled binaries
+*.exe
+*.out
+*.bin
+
+# Object files
+*.o
+*.obj
+
+# IDE files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# CMake cache
+CMakeCache.txt
+CMakeFiles/
